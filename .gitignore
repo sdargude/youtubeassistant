@@ -1,0 +1,17 @@
+# Ignore Python virtual environment folder
+env/
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+index.*
+*.db
+
+# Ignore system files
+.DS_Store
+
+# Ignore .env file
+.env
+
+# Add any other files or folders you want to ignore below this line
