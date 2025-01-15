@@ -14,4 +14,12 @@ index.*
 # Ignore .env file
 .env
 
+# Ignore transcript files
+transcripts/
+transcripts/*
+
+# Ignore vector database files
+vdb/
+vdb/*
+
 # Add any other files or folders you want to ignore below this line

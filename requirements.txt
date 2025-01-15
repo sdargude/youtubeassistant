@@ -6,3 +6,4 @@ youtube-transcript-api
 pytube
 faiss-cpu
 tiktoken
+langchain-community

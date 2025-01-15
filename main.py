@@ -2,7 +2,9 @@ import streamlit as st
 import langchainhelper as lch
 import textwrap
 import os
- 
+from youtube import Youtube
+from weburl import WebURL
+
 def extract_video_id(youtube_url):
     # Extract the video ID from the YouTube URL
     video_id = youtube_url.split("v=")[1]
@@ -44,3 +46,27 @@ if query and youtubeurl:
     response = lch.getresponsefromquery (db, query)
     st.subheader("Answer: ")
     st.text(textwrap.fill(response, width=80))
+
+def main():
+    api_key = os.getenv("YOUTUBE_API_KEY")
+    youtube_url = "https://www.youtube.com/watch?v=zm0QVutAkYg"
+    
+    yt = Youtube(api_key, youtube_url)
+    
+    # Download and save transcript
+    documents = yt.download_youtube_transcript()
+    if documents:
+        yt.save_documents_to_file(documents)
+    
+    # Save transcript with title
+    file_path, file_size = yt.save_transcript_with_title()
+    if file_path:
+        print(f"Transcript saved at {file_path} with size {file_size} bytes")
+
+    # Example usage of WebURL
+    web_url = "https://example.com"
+    web = WebURL(web_url)
+    web.save_transcript_to_file()
+
+if __name__ == "__main__":
+    main()
