@@ -1,0 +1,16 @@
+{
+    "description": "Collection schema for storing YouTube and WebURL metadata with embeddings",
+    "fields": [
+        {"name": "pk", "type": "VARCHAR", "is_primary": true, "auto_id": false, "params": {"max_length": 100}},
+        {"name": "source_type", "type": "VARCHAR", "params": {"max_length": 10}},   
+        {"name": "title", "type": "VARCHAR", "params": {"max_length": 255}},
+        {"name": "description", "type": "VARCHAR", "params": {"max_length": 1024}},
+        {"name": "publish_date", "type": "VARCHAR", "params": {"max_length": 50}},
+        {"name": "view_count", "type": "INT64"},
+        {"name": "like_count", "type": "INT64"},
+        {"name": "dislike_count", "type": "INT64"},
+        {"name": "comment_count", "type": "INT64"},
+        {"name": "url", "type": "VARCHAR", "params": {"max_length": 255}},
+        {"name": "embeddings", "type": "FLOAT_VECTOR", "params": {"dim": 8}}
+    ]
+}
