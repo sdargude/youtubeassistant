@@ -56,6 +56,8 @@ class Youtube:
             statistics = video_info["statistics"]
 
             metadata = {
+                "id": video_id,
+                "source_type": "youtube",
                 "title": snippet.get("title"),
                 "description": snippet.get("description"),
                 "publish_date": snippet.get("publishedAt"),
@@ -95,7 +97,7 @@ class Youtube:
         
         if os.path.exists(file_path):
             print(f"Transcript already exists: {file_path}")
-            return
+            return file_path, 0
         else:
             print("Downloading the Transcript!")
         
@@ -109,6 +111,10 @@ class Youtube:
             self.save_metadata_to_file(meta_file_path)
         else:
             print("No transcript to save.")
+        
+        print("Everything saved..")
+
+        return file_path, len(transcript)
 
     def save_metadata_to_file(self, meta_file_path: str):
         """
